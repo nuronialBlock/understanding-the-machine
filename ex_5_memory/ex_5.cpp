@@ -12,7 +12,7 @@ int intcmp(void* elem1, void* elem2) {
 }
 
 int strCmp(void* elem1, void* elem2) {
-	char* s1 = *(char**)elem1;
+	char* s1 = (char*)elem1;
 	char* s2 = *(char**)elem2;
 	cout << s1 << " " << s2 << "\n";
 	return strcmp(s1, s2);
@@ -38,7 +38,7 @@ int main() {
 
 	char* notes[] = { "Ab", "Gb", "F#", "B", "D" };
 	char* favoriteNote = "Gb";
-	char** charFound = (char**)lSearch(&favoriteNote, notes, 5, sizeof(char*), strCmp);
+	char** charFound = (char**)lSearch(favoriteNote, notes, 5, sizeof(char*), strCmp);
 	if(charFound == NULL) cout << "Not Found\n";
 	else cout << **charFound << "\n";
 
